@@ -1,4 +1,4 @@
-package com.joshifam.stripeAPIAutomation.ApiSetUp;
+package com.joshifam.stripeAPIAutomation.Tests;
 
 import java.lang.reflect.Method;
 

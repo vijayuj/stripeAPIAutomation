@@ -4,8 +4,6 @@ package com.joshifam.stripeAPIAutomation.Tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.joshifam.stripeAPIAutomation.ApiSetUp.APISetUp;
-
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
