@@ -17,5 +17,10 @@ public interface ConfigProperties extends Config{
 	
 	@Key("basePath")
 	String getbasePath();
+	
+	@Key("env")
+	String getenvironment();
+	
+	
 
 }
