@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel = "classes" thread-count="2">
+  <test  name="Smoke">
+    <classes>
+      <class name="com.joshifam.stripeAPIAutomation.Tests.MyFirstTest"/>
+    </classes>
+  </test> <!-- Test -->
+  <test  name="Regression">
+    <classes>
+      <class name="com.joshifam.stripeAPIAutomation.Tests.MySecondTest"/>
+      <class name="com.joshifam.stripeAPIAutomation.Tests.MyThirdTest"/>
+    </classes>
+  </test> <!-- Test -->
+  
+  
+</suite> <!-- Suite -->

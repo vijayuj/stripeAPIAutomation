@@ -1,0 +1,157 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.joshifam</groupId>
+  <artifactId>stripeAPIAutomation</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>API Test Automation project</name>
+  <description>Sample practise API Test Automation project</description>
+  
+  
+<dependencies>
+
+    <!-- ========================= -->
+    <!-- REST ASSURED (API Testing) -->
+    <!-- ========================= -->
+    <dependency>
+        <groupId>io.rest-assured</groupId>
+        <artifactId>rest-assured</artifactId>
+        <version>5.4.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>io.rest-assured</groupId>
+        <artifactId>json-path</artifactId>
+        <version>5.4.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>io.rest-assured</groupId>
+        <artifactId>xml-path</artifactId>
+        <version>5.4.0</version>
+    </dependency>
+
+
+    <!-- ========================= -->
+    <!-- JACKSON (JSON/YAML Mapper) -->
+    <!-- ========================= -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.17.1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>2.17.1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-annotations</artifactId>
+        <version>2.17.1</version>
+    </dependency>
+
+
+    <!-- ========================= -->
+    <!-- TESTNG (Test Runner) -->
+    <!-- ========================= -->
+    <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.10.2</version>
+        <scope>test</scope>
+    </dependency>
+
+
+    <!-- ========================= -->
+    <!-- EXTENT REPORTS (HTML Reporting) -->
+    <!-- ========================= -->
+    <dependency>
+        <groupId>com.aventstack</groupId>
+        <artifactId>extentreports</artifactId>
+        <version>5.1.1</version>
+    </dependency>
+
+
+    <!-- ========================= -->
+    <!-- OWNER API (Typed Config) -->
+    <!-- ========================= -->
+    <dependency>
+        <groupId>org.aeonbits.owner</groupId>
+        <artifactId>owner</artifactId>
+        <version>1.0.12</version>
+    </dependency>
+
+
+    <!-- ========================= -->
+    <!-- JAVA FAKER (Test Data) -->
+    <!-- ========================= -->
+    <dependency>
+        <groupId>com.github.javafaker</groupId>
+        <artifactId>javafaker</artifactId>
+        <version>1.0.2</version>
+    </dependency>
+
+
+    <!-- ========================= -->
+    <!-- LOMBOK (Optional POJO Helper) -->
+    <!-- ========================= -->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.32</version>
+        <scope>provided</scope>
+    </dependency>
+
+
+    <!-- ========================= -->
+    <!-- LOGGING (SLF4J + Logback) -->
+    <!-- ========================= -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>2.0.13</version>
+    </dependency>
+
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.5.6</version>
+    </dependency>
+    
+    <dependency>
+    <groupId>org.codehaus.groovy</groupId>
+    <artifactId>groovy</artifactId>
+    <version>3.0.21</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.codehaus.groovy</groupId>
+	    <artifactId>groovy-json</artifactId>
+	    <version>3.0.21</version>
+	</dependency>
+
+</dependencies>
+<build>
+	<plugins>
+		<plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-surefire-plugin</artifactId>
+	    <version>3.2.5</version>
+	
+		    <configuration>
+		        <!-- Point to your TestNG suite XML -->
+		        <suiteXmlFiles>
+		            <suiteXmlFile>testng.xml</suiteXmlFile>
+		        </suiteXmlFiles>
+		
+		        <!-- Optional but useful -->
+		        <testFailureIgnore>false</testFailureIgnore>
+		        <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+		    </configuration>
+		</plugin>
+	</plugins> 
+</build>
+  
+</project>

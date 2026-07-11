@@ -1,0 +1,21 @@
+package com.joshifam.stripeAPIAutomation.TestUtils;
+
+import org.aeonbits.owner.Config;
+import org.aeonbits.owner.Config.Key;
+import org.aeonbits.owner.Config.Sources;
+
+//import org.aeonbits.owner.Config;
+
+@Sources("classpath:configFiles/config.properties")
+public interface ConfigProperties extends Config{
+	
+	@Key("secretKey")
+	String getSecretKeys();
+	
+	@Key("baseURL")
+	String getbaseURL();
+	
+	@Key("basePath")
+	String getbasePath();
+
+}
