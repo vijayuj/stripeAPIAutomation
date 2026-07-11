@@ -27,14 +27,14 @@ public class APISetUp {
 	
 	protected static RequestSpecification getRequestSpecification() {
 		return RestAssured.given().auth().basic(cp.getSecretKeys(), "");
-		
+		(cp.getSecretKeys())!=null? cp.getSecretKeys():System.getProperty("secretKey");
 	}
 	
 	@BeforeSuite
 	public static void beforeSuite() {
 		System.out.println("\n 1. BEFORE SUITE Starting the Test Eexcution now \n");
-		RestAssured.baseURI = cp.getbaseURL();
-		RestAssured.basePath = cp.getbasePath();	
+		RestAssured.baseURI = (cp.getbaseURL())!=null? cp.getbaseURL():System.getProperty("baseURI");
+		RestAssured.basePath = (cp.getbasePath())!=null? cp.getbasePath():System.getProperty("basePath");
 		
 	}
 	
