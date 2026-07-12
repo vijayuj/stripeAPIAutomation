@@ -10,6 +10,7 @@ import org.aeonbits.owner.Config.Sources;
 public interface ConfigProperties extends Config{
 	
 	@Key("secretKey")
+	@DefaultValue("${secretKey}") 
 	String getSecretKeys();
 	
 	@Key("baseURL")

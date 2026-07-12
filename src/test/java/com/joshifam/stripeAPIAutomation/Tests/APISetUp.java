@@ -26,7 +26,7 @@ public class APISetUp {
 	protected static ConfigProperties cp=  ConfigFactory.create(ConfigProperties.class);
 	
 	protected static RequestSpecification getRequestSpecification() {
-		return RestAssured.given().auth().basic((cp.getSecretKeys()!=null)? cp.getSecretKeys():System.getProperty("secretKey"), "");
+		return RestAssured.given().auth().basic(cp.getSecretKeys(), "");
 		
 	}
 	
