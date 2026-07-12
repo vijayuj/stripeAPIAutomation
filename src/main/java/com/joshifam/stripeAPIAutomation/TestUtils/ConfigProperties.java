@@ -6,7 +6,12 @@ import org.aeonbits.owner.Config.Sources;
 
 //import org.aeonbits.owner.Config;
 
-@Sources("classpath:configFiles/config.properties.template")
+//"system:properties" instructs the framework to look at your Maven -D flags first!
+@Sources({
+ "system:properties",
+ "classpath:configFiles/config.properties"
+})
+
 public interface ConfigProperties extends Config{
 	
 	@Key("secretKey")

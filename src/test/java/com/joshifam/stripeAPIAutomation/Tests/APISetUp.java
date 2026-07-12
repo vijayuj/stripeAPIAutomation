@@ -35,7 +35,7 @@ public class APISetUp {
 	@BeforeSuite
 	public static void beforeSuite() {
 		String envv = System.getProperty("environment");
-		System.out.println("\n 1. BEFORE SUITE Starting the Test Eexcution now \n"+System.getProperty("baseURI")+"\n"+envv);
+		System.out.println("\n 1. BEFORE SUITE Starting the Test Execution now \n"+cp.getbaseURL()+"\n"+envv);
 		RestAssured.baseURI = cp.getbaseURL();
 		RestAssured.basePath = cp.getbasePath();
 		
