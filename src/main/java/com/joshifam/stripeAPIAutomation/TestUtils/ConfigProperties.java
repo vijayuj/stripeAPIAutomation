@@ -6,7 +6,7 @@ import org.aeonbits.owner.Config.Sources;
 
 //import org.aeonbits.owner.Config;
 
-@Sources("classpath:configFiles/config.properties")
+@Sources("classpath:configFiles/config.properties.template")
 public interface ConfigProperties extends Config{
 	
 	@Key("secretKey")
