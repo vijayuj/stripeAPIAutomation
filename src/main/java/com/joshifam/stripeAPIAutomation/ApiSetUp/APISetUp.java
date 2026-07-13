@@ -55,17 +55,20 @@ public class APISetUp {
 		
 		/* Archiving Test Report
 		 */
-		CommonUtils.archiveReport();
 		
-		//System.out.println("Environement selected in Jenkins is:- "+System.getProperty("environment"));
-		//ConfigFactory.setProperty("environment", System.getProperty("environment"));
 		
-		excel = new ExcelReader(Paths.get(baseDirectory, cp.getTestData()).toFile());
-		
-		File testReport =  Paths.get(baseDirectory, cp.getTestReportFilePath(), cp.getTestReportName()).toFile(); // ✅ Converted to File
-				
-		extentReport = ExtentManager.GetExtent(testReport);
-		
+		/*
+		 * CommonUtils.archiveReport();
+		 * 
+		 * 
+		 * excel = new ExcelReader(Paths.get(baseDirectory, cp.getTestData()).toFile());
+		 */
+		  File testReport = Paths.get(baseDirectory, cp.getTestReportFilePath(),
+		  cp.getTestReportName()).toFile(); // ✅ Converted to File
+		  
+		  extentReport = ExtentManager.GetExtent(testReport);
+		 
+		 
 		System.out.println("\n 1. BEFORE SUITE Starting the Test Execution now \n");
 		RestAssured.baseURI = cp.getbaseURL();
 		RestAssured.basePath = cp.getbasePath();		
