@@ -30,10 +30,9 @@ import com.joshifam.stripeAPIAutomation.TestUtils.ExtentManager;
 import io.restassured.RestAssured;
 import io.restassured.specification.*;
 
-
 public class APISetUp {
-	
-	public static ConfigProperties cp=ConfigFactory.create(ConfigProperties.class);
+
+	public static ConfigProperties cp = ConfigFactory.create(ConfigProperties.class);
 	public static String baseDirectory = System.getProperty("user.dir");
 
 	public static ExcelReader excel;
@@ -41,70 +40,67 @@ public class APISetUp {
 	public static ExtentReports extentReport;
 	public static ThreadLocal<ExtentTest> classLevelLog = new ThreadLocal<ExtentTest>();
 	public static ThreadLocal<ExtentTest> testLevelLog = new ThreadLocal<ExtentTest>();
-	public static ExtentTest test=null;
-	
+	public static ExtentTest test = null;
+
 	protected static RequestSpecification getRequestSpecification() {
-		return RestAssured
-				.given()
-				.auth()
-				.basic(cp.getSecretKeys(), "");		
+		return RestAssured.given().auth().basic(cp.getSecretKeys(), "");
 	}
-	
+
 	@BeforeSuite
 	public static void beforeSuite() {
-		
-		/* Archiving Test Report
+
+		/*
+		 * Archiving Test Report
 		 */
-		
-		
-		
-		  CommonUtils.archiveReport();
-		  
-		  
-			
-			  excel = new ExcelReader(Paths.get(baseDirectory, cp.getTestData()).toFile());
-			  
-				/*
-				 * File testReport = Paths.get(baseDirectory, cp.getTestReportFilePath(),
-				 * cp.getTestReportName()).toFile(); // ✅ Converted to File
-				 * 
-				 * extentReport = ExtentManager.GetExtent(testReport);
-				 * 
-				 */
-		 
+
+		CommonUtils.archiveReport();
+
+		/*
+		 * excel = new ExcelReader(Paths.get(baseDirectory, cp.getTestData()).toFile());
+		 * 
+		 * 
+		 * File testReport = Paths.get(baseDirectory, cp.getTestReportFilePath(),
+		 * cp.getTestReportName()).toFile(); // ✅ Converted to File
+		 * 
+		 * extentReport = ExtentManager.GetExtent(testReport);
+		 * 
+		 */
+
 		System.out.println("\n 1. BEFORE SUITE Starting the Test Execution now \n");
 		RestAssured.baseURI = cp.getbaseURL();
-		RestAssured.basePath = cp.getbasePath();		
+		RestAssured.basePath = cp.getbasePath();
 	}
-	
+
 	@BeforeTest
 	public void beforeTest() {
-		System.out.println("\n 2. BEFORE TEST TAG log before any of the Tests get executed."
-				+ "We are connecting to database \n");
-	
+		System.out.println(
+				"\n 2. BEFORE TEST TAG log before any of the Tests get executed." + "We are connecting to database \n");
+
 	}
+
 	@BeforeClass
 	public void beforeClass(ITestContext context) {
-		System.out.println("\n 3. BEFORE CLASS log from "+context.getClass().getSimpleName()+" before executing any tests in here \n");
+		System.out.println("\n 3. BEFORE CLASS log from " + context.getClass().getSimpleName()
+				+ " before executing any tests in here \n");
 		/*
 		 * ExtentTest classLevelTest =
 		 * extentReport.createTest(getClass().getSimpleName());
 		 * classLevelLog.set(classLevelTest);
-		 */	
+		 */
 	}
-	
+
 	@BeforeMethod
 	public void beforeMethod(Method method) {
-		System.out.println("\n 4. BEFORE TEST log before "+method.getName()+" test begun \n");
+		System.out.println("\n 4. BEFORE TEST log before " + method.getName() + " test begun \n");
 		/*
 		 * test = classLevelLog.get().createNode(method.getName());
 		 * testLevelLog.set(test);
 		 */
 	}
-	
+
 	@AfterMethod
 	public void afterMethod(Method method, ITestResult result) {
-		System.out.println("\n 5. AFTER TEST logging after "+result.getMethod().getMethodName()+" test ended \n");
+		System.out.println("\n 5. AFTER TEST logging after " + result.getMethod().getMethodName() + " test ended \n");
 		/*
 		 * switch (result.getStatus()) { case ITestResult.SUCCESS: Markup mp1 =
 		 * MarkupHelper.createLabel(result.getMethod().getMethodName(),
@@ -123,23 +119,23 @@ public class APISetUp {
 		 * default:System.out.println("Unknown Test Status encountered."); break; }
 		 */
 	}
-	
+
 	@AfterClass
 	public void afterClass(ITestContext context) {
-		System.out.println("\n 6. AFTER CLASS log from "+context.getClass().getSimpleName()+" before executing any tests in here \n");
-	
+		System.out.println("\n 6. AFTER CLASS log from " + context.getClass().getSimpleName()
+				+ " before executing any tests in here \n");
+
 	}
-	
+
 	@AfterTest
 	public void afterTest() {
 		System.out.println("\n 7. AFTER TEST TAG We are dis-connecting the database \n");
-	
+
 	}
-		
+
 	@AfterSuite
 	public static void afterSuite() {
-		System.out.println("\n 8. AFTER SUITE Ending the Test Eexcution now \n");	
+		System.out.println("\n 8. AFTER SUITE Ending the Test Eexcution now \n");
 	}
-	
-	
+
 }
