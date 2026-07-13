@@ -1,5 +1,4 @@
 test-output/
 target/
 *.sh
-src/main/java/com/joshifam/stripeAPIAutomation/TestUtils/KeyProperties.java
 src/test/resources/configFiles/key.properties
