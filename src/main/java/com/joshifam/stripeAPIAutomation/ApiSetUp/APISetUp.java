@@ -1,7 +1,9 @@
 package com.joshifam.stripeAPIAutomation.ApiSetUp;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Method;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import org.aeonbits.owner.ConfigFactory;
@@ -55,16 +57,23 @@ public class APISetUp {
 
 		CommonUtils.archiveReport();
 
+		
 		/*
 		 * excel = new ExcelReader(Paths.get(baseDirectory, cp.getTestData()).toFile());
 		 * 
-		 * 
-		 * File testReport = Paths.get(baseDirectory, cp.getTestReportFilePath(),
-		 * cp.getTestReportName()).toFile(); // ✅ Converted to File
-		 * 
-		 * extentReport = ExtentManager.GetExtent(testReport);
-		 * 
 		 */
+		  File testReport = Paths.get(baseDirectory, cp.getTestReportFilePath(), cp.getTestReportName()).toFile(); // ✅ Converted to File
+		  if(!Files.isRegularFile(testReport.toPath())) {
+			  try {
+				Files.createFile(testReport.toPath());
+			  } catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			  }
+		  }
+		  extentReport = ExtentManager.GetExtent(testReport);
+		  
+		 
 
 		System.out.println("\n 1. BEFORE SUITE Starting the Test Execution now \n");
 		RestAssured.baseURI = cp.getbaseURL();
