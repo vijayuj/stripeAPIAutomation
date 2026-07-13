@@ -1,6 +1,8 @@
 package com.joshifam.stripeAPIAutomation.TestUtils;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import com.joshifam.stripeAPIAutomation.ApiSetUp.APISetUp;
 import com.aventstack.extentreports.AnalysisStrategy;
@@ -14,12 +16,12 @@ public class ExtentManager {
 	//private static String filePath = "./extentreport.html";
 
 
-	public static ExtentReports GetExtent(String filePath) {
+	public static ExtentReports GetExtent(File file) {
 		if (extent != null) {
 			return extent;
 		} else {
 			extent = new ExtentReports();
-			extent.attachReporter(getHtmlReporter(filePath));
+			extent.attachReporter(getHtmlReporter(file));
 			extent.setSystemInfo("Host Name", "Vijay Joshi");
 			
 			extent.setAnalysisStrategy(AnalysisStrategy.CLASS);
@@ -27,9 +29,9 @@ public class ExtentManager {
 		}
 	}
 
-	public static ExtentSparkReporter getHtmlReporter(String filePath) {
+	public static ExtentSparkReporter getHtmlReporter(File file) {
 
-		htmlReporter = new ExtentSparkReporter(filePath);
+		htmlReporter = new ExtentSparkReporter(file);
 		/*htmlReporter.config().setChartVisibilityOnOpen(true);
 		htmlReporter.config().setDocumentTitle(" Automation Report");
 		htmlReporter.config().setReportName("Automation");
@@ -37,7 +39,8 @@ public class ExtentManager {
 		
 	//	htmlReporter.setAppendExisting(false);
 		try {
-			htmlReporter.loadXMLConfig(APISetUp.baseDirectory+APISetUp.cp.getreportConfigFile());
+			//+
+			htmlReporter.loadXMLConfig(Paths.get(APISetUp.baseDirectory, APISetUp.cp.getreportConfigFile()).toFile());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

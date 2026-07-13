@@ -1,6 +1,8 @@
 package com.joshifam.stripeAPIAutomation.ApiSetUp;
 
+import java.io.File;
 import java.lang.reflect.Method;
+import java.nio.file.Paths;
 
 import org.aeonbits.owner.ConfigFactory;
 import org.testng.ITestContext;
@@ -31,7 +33,7 @@ import io.restassured.specification.*;
 
 public class APISetUp {
 	
-	public static ConfigProperties cp;
+	public static ConfigProperties cp=ConfigFactory.create(ConfigProperties.class);
 	public static String baseDirectory = System.getProperty("user.dir");
 
 	public static ExcelReader excel;
@@ -55,15 +57,14 @@ public class APISetUp {
 		 */
 		CommonUtils.archiveReport();
 		
-		System.out.println("Environement selected in Jenkins is:- "+System.getProperty("environment"));
-		ConfigFactory.setProperty("environment", System.getProperty("environment"));
-		cp=  ConfigFactory.create(ConfigProperties.class);
+		//System.out.println("Environement selected in Jenkins is:- "+System.getProperty("environment"));
+		//ConfigFactory.setProperty("environment", System.getProperty("environment"));
 		
-		excel = new ExcelReader(
-				baseDirectory + cp.getTestData());
+		excel = new ExcelReader(Paths.get(baseDirectory, cp.getTestData()).toFile());
 		
-		extentReport = ExtentManager
-				.GetExtent(baseDirectory+cp.getTestReportFilePath() + cp.getTestReportName());
+		File testReport =  Paths.get(baseDirectory, cp.getTestReportFilePath(), cp.getTestReportName()).toFile(); // ✅ Converted to File
+				
+		extentReport = ExtentManager.GetExtent(testReport);
 		
 		System.out.println("\n 1. BEFORE SUITE Starting the Test Execution now \n");
 		RestAssured.baseURI = cp.getbaseURL();

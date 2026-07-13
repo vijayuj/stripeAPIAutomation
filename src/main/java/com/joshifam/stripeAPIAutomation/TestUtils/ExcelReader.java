@@ -1,7 +1,9 @@
 package com.joshifam.stripeAPIAutomation.TestUtils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.nio.file.Path;
 import java.util.Calendar;
 
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -22,7 +24,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExcelReader {
 
 
-	public  String path;
+	public  File file;
 	public  FileInputStream fis = null;
 	public  FileOutputStream fileOut =null;
 	private XSSFWorkbook workbook = null;
@@ -30,11 +32,11 @@ public class ExcelReader {
 	private XSSFRow row   =null;
 	private XSSFCell cell = null;
 	
-	public ExcelReader(String path) {
+	public ExcelReader(File file) {
 		
-		this.path=path;
+		this.file=file;
 		try {
-			fis = new FileInputStream(path);
+			fis = new FileInputStream(file);
 			workbook = new XSSFWorkbook(fis);
 			sheet = workbook.getSheetAt(0);
 			fis.close();
@@ -187,7 +189,7 @@ public class ExcelReader {
 	// returns true if data is set successfully else false
 	public boolean setCellData(String sheetName,String colName,int rowNum, String data){
 		try{
-		fis = new FileInputStream(path); 
+		fis = new FileInputStream(file); 
 		workbook = new XSSFWorkbook(fis);
 
 		if(rowNum<=0)
@@ -223,7 +225,7 @@ public class ExcelReader {
 	    
 	    cell.setCellValue(data);
 
-	    fileOut = new FileOutputStream(path);
+	    fileOut = new FileOutputStream(file);
 
 		workbook.write(fileOut);
 
@@ -243,7 +245,7 @@ public class ExcelReader {
 	public boolean setCellData(String sheetName,String colName,int rowNum, String data,String url){
 		
 		try{
-		fis = new FileInputStream(path); 
+		fis = new FileInputStream(file); 
 		workbook = new XSSFWorkbook(fis);
 
 		if(rowNum<=0)
@@ -292,7 +294,7 @@ public class ExcelReader {
 	    cell.setHyperlink(link);
 	    cell.setCellStyle(hlink_style);
 	      
-	    fileOut = new FileOutputStream(path);
+	    fileOut = new FileOutputStream(file);
 		workbook.write(fileOut);
 
 	    fileOut.close();	
@@ -313,7 +315,7 @@ public class ExcelReader {
 		FileOutputStream fileOut;
 		try {
 			 workbook.createSheet(sheetname);	
-			 fileOut = new FileOutputStream(path);
+			 fileOut = new FileOutputStream(file);
 			 workbook.write(fileOut);
 		     fileOut.close();		    
 		} catch (Exception e) {			
@@ -332,7 +334,7 @@ public class ExcelReader {
 		FileOutputStream fileOut;
 		try {
 			workbook.removeSheetAt(index);
-			fileOut = new FileOutputStream(path);
+			fileOut = new FileOutputStream(file);
 			workbook.write(fileOut);
 		    fileOut.close();		    
 		} catch (Exception e) {			
@@ -346,7 +348,7 @@ public class ExcelReader {
 		
 		
 		try{				
-			fis = new FileInputStream(path); 
+			fis = new FileInputStream(file); 
 			workbook = new XSSFWorkbook(fis);
 			int index = workbook.getSheetIndex(sheetName);
 			if(index==-1)
@@ -371,7 +373,7 @@ public class ExcelReader {
 	        cell.setCellValue(colName);
 	        cell.setCellStyle(style);
 	        
-	        fileOut = new FileOutputStream(path);
+	        fileOut = new FileOutputStream(file);
 			workbook.write(fileOut);
 		    fileOut.close();		    
 
@@ -392,7 +394,7 @@ public class ExcelReader {
 		try{
 		if(!isSheetExist(sheetName))
 			return false;
-		fis = new FileInputStream(path); 
+		fis = new FileInputStream(file); 
 		workbook = new XSSFWorkbook(fis);
 		sheet=workbook.getSheet(sheetName);
 		XSSFCellStyle style = workbook.createCellStyle();
@@ -412,7 +414,7 @@ public class ExcelReader {
 				}
 			}
 		}
-		fileOut = new FileOutputStream(path);
+		fileOut = new FileOutputStream(file);
 		workbook.write(fileOut);
 	    fileOut.close();
 		}

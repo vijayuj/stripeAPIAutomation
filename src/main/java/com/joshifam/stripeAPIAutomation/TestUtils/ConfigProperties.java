@@ -1,17 +1,14 @@
 package com.joshifam.stripeAPIAutomation.TestUtils;
 
 import org.aeonbits.owner.Config;
-import org.aeonbits.owner.Config.Key;
 import org.aeonbits.owner.Config.Sources;
-
-//import org.aeonbits.owner.Config;
 
 //"system:properties" instructs the framework to look at your Maven -D flags first!
 @Sources({
  "system:properties",
  "classpath:configFiles/config.properties"
 })
-
+//@Sources("classpath:configFiles/config.properties")
 public interface ConfigProperties extends Config{
 	
 	@Key("secretKey")
@@ -37,8 +34,4 @@ public interface ConfigProperties extends Config{
 	
 	@Key("reportConfigFile")
 	String getreportConfigFile();
-	
-	
-	
-
 }
