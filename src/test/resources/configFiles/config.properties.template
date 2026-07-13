@@ -1,3 +1,7 @@
 secretKey = place_holder
 baseURL = place_holder
 basePath = place_holder
+TestData = /src/test/resources/testData/TestData.xlsx
+testReportFilePath = /src/test/resources/testReports/
+testReportName=TestReport.html
+reportConfigFile = /src/test/resources/configXMLFiles/ReportsConfig.xml

@@ -2,11 +2,12 @@ package com.joshifam.stripeAPIAutomation.TestUtils;
 
 import java.io.IOException;
 
+import com.joshifam.stripeAPIAutomation.ApiSetUp.APISetUp;
 import com.aventstack.extentreports.AnalysisStrategy;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-public class ExtentReportsManager {
+public class ExtentManager {
 	private static ExtentReports extent;
 	//private static ExtentTest test;
 	private static ExtentSparkReporter htmlReporter;
@@ -19,7 +20,7 @@ public class ExtentReportsManager {
 		} else {
 			extent = new ExtentReports();
 			extent.attachReporter(getHtmlReporter(filePath));
-			extent.setSystemInfo("Host Name", "Rahul@Java");
+			extent.setSystemInfo("Host Name", "Vijay Joshi");
 			
 			extent.setAnalysisStrategy(AnalysisStrategy.CLASS);
 			return extent;
@@ -36,7 +37,7 @@ public class ExtentReportsManager {
 		
 	//	htmlReporter.setAppendExisting(false);
 		try {
-			htmlReporter.loadXMLConfig(System.getProperty("user.dir")+"/src/test/resources/configXMLFiles/ReportsConfig.xml");
+			htmlReporter.loadXMLConfig(APISetUp.baseDirectory+APISetUp.cp.getreportConfigFile());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

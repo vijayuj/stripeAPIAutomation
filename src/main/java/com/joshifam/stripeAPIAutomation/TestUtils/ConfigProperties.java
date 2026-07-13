@@ -26,6 +26,19 @@ public interface ConfigProperties extends Config{
 	@Key("env")
 	String getenvironment();
 	
+	@Key("TestData")
+	String getTestData();
+	
+	@Key("testReportName")
+	String getTestReportName();
+	
+	@Key("testReportFilePath")
+	String getTestReportFilePath();
+	
+	@Key("reportConfigFile")
+	String getreportConfigFile();
+	
+	
 	
 
 }
