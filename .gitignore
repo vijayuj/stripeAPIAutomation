@@ -1,4 +1,3 @@
 test-output/
-src/test/resources/configFiles/config.properties
 target/
 *.sh

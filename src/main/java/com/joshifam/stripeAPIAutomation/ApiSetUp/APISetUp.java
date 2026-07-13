@@ -45,7 +45,7 @@ public class APISetUp {
 	public static ExtentTest test = null;
 
 	protected static RequestSpecification getRequestSpecification() {
-		return RestAssured.given().auth().basic(cp.getSecretKeys(), "");
+		return RestAssured.given().auth().basic(System.getProperty("secretKey"), "");
 	}
 
 	@BeforeSuite
