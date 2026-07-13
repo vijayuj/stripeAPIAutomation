@@ -57,17 +57,18 @@ public class APISetUp {
 		 */
 		
 		
-		/*
-		 * CommonUtils.archiveReport();
-		 * 
-		 * 
-		 * excel = new ExcelReader(Paths.get(baseDirectory, cp.getTestData()).toFile());
-		 * 
-		 * File testReport = Paths.get(baseDirectory, cp.getTestReportFilePath(),
-		 * cp.getTestReportName()).toFile(); // ✅ Converted to File
-		 * 
-		 * extentReport = ExtentManager.GetExtent(testReport);
-		 */
+		
+		  CommonUtils.archiveReport();
+		  
+		  
+			/*
+			 * excel = new ExcelReader(Paths.get(baseDirectory, cp.getTestData()).toFile());
+			 * 
+			 * File testReport = Paths.get(baseDirectory, cp.getTestReportFilePath(),
+			 * cp.getTestReportName()).toFile(); // ✅ Converted to File
+			 * 
+			 * extentReport = ExtentManager.GetExtent(testReport);
+			 */
 		 
 		 
 		System.out.println("\n 1. BEFORE SUITE Starting the Test Execution now \n");
