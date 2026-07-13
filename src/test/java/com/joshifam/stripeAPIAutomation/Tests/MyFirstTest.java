@@ -35,7 +35,7 @@ public class MyFirstTest extends APISetUp {
 		//System.out.println("Body: " + response.asString());
 		
 		  Assert.assertEquals(response.jsonPath().get(
-		  "data.findAll{it.id.toLowerCase().startsWith('cus_')}.size()!=3"), true);
+		  "data.findAll{it.id.toLowerCase().startsWith('cus_')}.size()!=3"), false);
 		  Assert.assertEquals(response.jsonPath().getInt(
 		  "data.findAll{it.id.toLowerCase().startsWith('cus_')}.size()"), 3);
 		 
