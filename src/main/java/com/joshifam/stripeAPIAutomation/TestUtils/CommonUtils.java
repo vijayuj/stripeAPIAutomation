@@ -8,10 +8,12 @@ import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.joshifam.stripeAPIAutomation.ApiSetUp.APISetUp;
+
 public class CommonUtils {
 	
 	public static void archiveReport() {
-	    String oldreportName = "TestReport.html";
+	    String oldreportName = APISetUp.cp.getTestReportName();
 	    SimpleDateFormat sdf = new SimpleDateFormat("YYYY_MM_dd_hh_mm_ss");
 	    String newReportName = sdf.format(new Date()) + "_" + oldreportName;
 	    
