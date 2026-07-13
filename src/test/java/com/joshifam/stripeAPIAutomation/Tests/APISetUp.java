@@ -40,8 +40,8 @@ public class APISetUp {
 		 */
 		CommonUtils.archiveReport();
 		
-		String envv = System.getProperty("environment");
-		System.out.println("\n 1. BEFORE SUITE Starting the Test Execution now \n"+cp.getbaseURL()+"\n"+envv);
+		System.out.println("Environement selected in Jenkins is:- "+System.getProperty("environment"));
+		System.out.println("\n 1. BEFORE SUITE Starting the Test Execution now \n");
 		RestAssured.baseURI = cp.getbaseURL();
 		RestAssured.basePath = cp.getbasePath();		
 	}
