@@ -105,9 +105,8 @@ public class APISetUp {
 		  test = classLevelLog.get().createNode(method.getName());
 		  
 		  testLevelLog.set(test);
-		  MarkUp mb1 =  MarkupHelper.createLabel(result.getMethod().getMethodName(),
-				  ExtentColor.GREY);
-		  testLevelLog.get().info(mb1)
+		  Markup mb1 =  MarkupHelper.createLabel(method.getName()+" Started",ExtentColor.GREY);
+		  testLevelLog.get().info(mb1);
 		 
 	}
 
