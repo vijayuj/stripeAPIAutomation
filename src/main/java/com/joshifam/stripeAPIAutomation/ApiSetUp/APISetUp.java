@@ -94,9 +94,11 @@ public class APISetUp {
 	@BeforeMethod
 	public void beforeMethod(Method method) {
 		System.out.println("\n 4. BEFORE TEST log before "+method.getName()+" test begun \n");
-/*		test = classLevelLog.get().createNode(method.getName());
-		testLevelLog.set(test);
-	}*/
+		/*
+		 * test = classLevelLog.get().createNode(method.getName());
+		 * testLevelLog.set(test);
+		 */
+	}
 	
 	@AfterMethod
 	public void afterMethod(Method method, ITestResult result) {
