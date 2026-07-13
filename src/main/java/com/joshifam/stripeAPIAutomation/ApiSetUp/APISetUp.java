@@ -58,10 +58,10 @@ public class APISetUp {
 		CommonUtils.archiveReport();
 
 		
-		/*
-		 * excel = new ExcelReader(Paths.get(baseDirectory, cp.getTestData()).toFile());
-		 * 
-		 */
+		
+		  excel = new ExcelReader(Paths.get(baseDirectory, cp.getTestData()).toFile());
+		  
+		 
 		  File testReport = Paths.get(baseDirectory, cp.getTestReportFilePath(), cp.getTestReportName()).toFile(); // ✅ Converted to File
 		  if(!Files.isRegularFile(testReport.toPath())) {
 			  try {
