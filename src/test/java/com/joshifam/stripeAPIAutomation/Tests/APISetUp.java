@@ -15,6 +15,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
 import com.aventstack.extentreports.Status;
+import com.joshifam.stripeAPIAutomation.TestUtils.CommonUtils;
 import com.joshifam.stripeAPIAutomation.TestUtils.ConfigProperties;
 
 import io.restassured.RestAssured;
@@ -34,11 +35,15 @@ public class APISetUp {
 	
 	@BeforeSuite
 	public static void beforeSuite() {
+		
+		/* Archiving Test Report
+		 */
+		CommonUtils.archiveReport();
+		
 		String envv = System.getProperty("environment");
 		System.out.println("\n 1. BEFORE SUITE Starting the Test Execution now \n"+cp.getbaseURL()+"\n"+envv);
 		RestAssured.baseURI = cp.getbaseURL();
-		RestAssured.basePath = cp.getbasePath();
-		
+		RestAssured.basePath = cp.getbasePath();		
 	}
 	
 	@BeforeTest
