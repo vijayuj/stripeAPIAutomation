@@ -35,4 +35,9 @@ public interface ConfigProperties extends Config{
 	
 	@Key("reportConfigFile")
 	String getreportConfigFile();
+	
+	@Key("TestDataSheetName")
+	String getTestDataSheetName();
+	
+	
 }

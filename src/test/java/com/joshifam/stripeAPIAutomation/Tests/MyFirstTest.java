@@ -1,18 +1,23 @@
 package com.joshifam.stripeAPIAutomation.Tests;
 
+import java.util.Hashtable;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.joshifam.stripeAPIAutomation.ApiSetUp.APISetUp;
+import com.joshifam.stripeAPIAutomation.TestUtils.DataProviderClass;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class MyFirstTest extends APISetUp {
 
-	@Test
-	public static void testAPI1() {
+	@Test(dataProviderClass=DataProviderClass.class, dataProvider="dp", priority=0, enabled=true)
+	public void testAPI1(Hashtable<String, String> data) {
 		// TODO Auto-generated method stub
 
-		String endPoint = "customers?limit=3";
+		String endPoint = data.get("endPoint");
+		System.out.println("Name and Email values are > " +data.get("name")+" "+ data.get("email"));
 /*		
 		Response create = RestAssured.given()
 			    .auth().basic(secretKey, "")

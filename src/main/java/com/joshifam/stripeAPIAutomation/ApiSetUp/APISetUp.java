@@ -28,6 +28,7 @@ import com.joshifam.stripeAPIAutomation.TestUtils.CommonUtils;
 import com.joshifam.stripeAPIAutomation.TestUtils.ConfigProperties;
 import com.joshifam.stripeAPIAutomation.TestUtils.ExcelReader;
 import com.joshifam.stripeAPIAutomation.TestUtils.ExtentManager;
+import com.joshifam.stripeAPIAutomation.TestUtils.KeyProperties;
 
 import io.restassured.RestAssured;
 import io.restassured.specification.*;
@@ -35,6 +36,7 @@ import io.restassured.specification.*;
 public class APISetUp {
 
 	public static ConfigProperties cp = ConfigFactory.create(ConfigProperties.class);
+	public static KeyProperties kp = ConfigFactory.create(KeyProperties.class);
 	public static String baseDirectory = System.getProperty("user.dir");
 
 	public static ExcelReader excel;
@@ -45,7 +47,8 @@ public class APISetUp {
 	public static ExtentTest test = null;
 
 	protected static RequestSpecification getRequestSpecification() {
-		return RestAssured.given().auth().basic(System.getProperty("secretKey"), "");
+		String fob = System.getProperty("secretKey");
+		return RestAssured.given().auth().basic(System.getProperty("secretKey",kp.getsecretKey()),"");
 	}
 
 	@BeforeSuite
