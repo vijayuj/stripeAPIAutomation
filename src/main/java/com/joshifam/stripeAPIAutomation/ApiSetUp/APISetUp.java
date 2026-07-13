@@ -62,11 +62,12 @@ public class APISetUp {
 		 * 
 		 * 
 		 * excel = new ExcelReader(Paths.get(baseDirectory, cp.getTestData()).toFile());
+		 * 
+		 * File testReport = Paths.get(baseDirectory, cp.getTestReportFilePath(),
+		 * cp.getTestReportName()).toFile(); // ✅ Converted to File
+		 * 
+		 * extentReport = ExtentManager.GetExtent(testReport);
 		 */
-		  File testReport = Paths.get(baseDirectory, cp.getTestReportFilePath(),
-		  cp.getTestReportName()).toFile(); // ✅ Converted to File
-		  
-		  extentReport = ExtentManager.GetExtent(testReport);
 		 
 		 
 		System.out.println("\n 1. BEFORE SUITE Starting the Test Execution now \n");
@@ -83,42 +84,40 @@ public class APISetUp {
 	@BeforeClass
 	public void beforeClass(ITestContext context) {
 		System.out.println("\n 3. BEFORE CLASS log from "+context.getClass().getSimpleName()+" before executing any tests in here \n");
-		ExtentTest classLevelTest = extentReport.createTest(getClass().getSimpleName());
-		classLevelLog.set(classLevelTest);		
+		/*
+		 * ExtentTest classLevelTest =
+		 * extentReport.createTest(getClass().getSimpleName());
+		 * classLevelLog.set(classLevelTest);
+		 */	
 	}
 	
 	@BeforeMethod
 	public void beforeMethod(Method method) {
 		System.out.println("\n 4. BEFORE TEST log before "+method.getName()+" test begun \n");
-		test = classLevelLog.get().createNode(method.getName());
+/*		test = classLevelLog.get().createNode(method.getName());
 		testLevelLog.set(test);
-	}
+	}*/
 	
 	@AfterMethod
 	public void afterMethod(Method method, ITestResult result) {
 		System.out.println("\n 5. AFTER TEST logging after "+result.getMethod().getMethodName()+" test ended \n");
-		switch (result.getStatus()) {
-        case ITestResult.SUCCESS:
-        	Markup mp1 = MarkupHelper.createLabel(result.getMethod().getMethodName(), ExtentColor.GREEN);
-        	testLevelLog.get().pass(mp1);
-        	// Your custom logic for pass
-            break;
-        case ITestResult.FAILURE:
-            System.out.println("Test Failed: " + result.getName());
-            System.out.println("Reason: " + result.getThrowable().getMessage());
-            Markup mf1 = MarkupHelper.createLabel(result.getMethod().getMethodName()+" FAILED", ExtentColor.RED);
-            Markup mf2 = MarkupHelper.createLabel(result.getThrowable().getMessage(), ExtentColor.RED);
-            testLevelLog.get().fail(mf1);
-            testLevelLog.get().fail(mf2);
-            
-            
-            break;
-        case ITestResult.SKIP:
-            System.out.println("Test Skipped: " + result.getName());
-            break;
-        default:System.out.println("Unknown Test Status encountered.");
-        	break;
-    }
+		/*
+		 * switch (result.getStatus()) { case ITestResult.SUCCESS: Markup mp1 =
+		 * MarkupHelper.createLabel(result.getMethod().getMethodName(),
+		 * ExtentColor.GREEN); testLevelLog.get().pass(mp1); // Your custom logic for
+		 * pass break; case ITestResult.FAILURE: System.out.println("Test Failed: " +
+		 * result.getName()); System.out.println("Reason: " +
+		 * result.getThrowable().getMessage()); Markup mf1 =
+		 * MarkupHelper.createLabel(result.getMethod().getMethodName()+" FAILED",
+		 * ExtentColor.RED); Markup mf2 =
+		 * MarkupHelper.createLabel(result.getThrowable().getMessage(),
+		 * ExtentColor.RED); testLevelLog.get().fail(mf1); testLevelLog.get().fail(mf2);
+		 * 
+		 * 
+		 * break; case ITestResult.SKIP: System.out.println("Test Skipped: " +
+		 * result.getName()); break;
+		 * default:System.out.println("Unknown Test Status encountered."); break; }
+		 */
 	}
 	
 	@AfterClass
